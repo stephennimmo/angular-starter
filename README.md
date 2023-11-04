@@ -1,8 +1,15 @@
 # Angular Starter
 
-git clone 
-
-sed replace
+Easy button. Clone the repo and replace the relevant required references to 'angular-starter'
+```
+git clone git@github.com:stephennimmo/angular-starter.git <project-name>
+find <project-name> -type f -name '*.json' -exec sed -i '' s/angular-starter/<project-name>/g {} +
+```
+For example, if your new project name is 'test-ng'
+```
+git clone git@github.com:stephennimmo/angular-starter.git test-ng
+find test-ng -type f -name '*.json' -exec sed -i '' s/angular-starter/test-ng/g {} +
+```
 
 # Angular Instructions
 
