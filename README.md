@@ -1,4 +1,10 @@
-# AngularStarter
+# Angular Starter
+
+git clone 
+
+sed replace
+
+# Angular Instructions
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
 
