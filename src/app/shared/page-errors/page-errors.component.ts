@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { PageError } from '../base-component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-errors',
@@ -8,6 +10,6 @@ import { Component, Input } from '@angular/core';
 export class PageErrorsComponent {
 
   @Input()
-  errors?: Error[]
+  pageErrors$?: Observable<PageError[]>;
 
 }

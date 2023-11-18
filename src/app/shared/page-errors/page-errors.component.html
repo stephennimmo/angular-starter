@@ -1,6 +1,10 @@
-<div *ngIf="errors" class="alert alert-danger" role="alert">
-  <div>The following errors have occurred:</div>
-  <ul class="mb-0">
-    <li *ngFor="let error of errors">{{error.message}}</li>
-  </ul>
-</div>
+<ng-container *ngIf="pageErrors$|async as pe">
+  <ng-container *ngIf="pe.length > 0">
+    <div class="alert alert-danger" role="alert">
+      <div>The following errors have occurred:</div>
+      <ul class="mb-0">
+        <li *ngFor="let pageError of pageErrors$|async">{{pageError.message}}</li>
+      </ul>
+    </div>
+  </ng-container>
+</ng-container>

@@ -6,14 +6,34 @@
     </button>
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" routerLink="about" (click)="isCollapsed = true">About</a>
-        </li>
+        <ng-container *ngIf="isAuthenticated|async">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="app/dashboard" (click)="isCollapsed = true">Dashboard</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!(isAuthenticated|async)">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="about" (click)="isCollapsed = true">About</a>
+          </li>
+        </ng-container>
       </ul>
+
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" routerLink="login" (click)="isCollapsed = true">Login</a>
-        </li>
+        <ng-container *ngIf="isAuthenticated|async">
+          <div ngbDropdown class="d-inline-block">
+            <button ngbDropdownToggle id="dropdownUserProfile" type="button" class="nav-link">
+              {{ (currentUser|async)?.username }}
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownUserProfile">
+              <button ngbDropdownItem (click)="logout(); isCollapsed = true">Logout</button>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!(isAuthenticated|async)">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="login" (click)="isCollapsed = true">Login</a>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>

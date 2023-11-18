@@ -4,7 +4,7 @@
       <div class="card">
         <h3 class="card-header">Login</h3>
         <div class="card-body">
-          <app-page-errors [errors]="errors"></app-page-errors>
+          <app-page-errors [pageErrors$]="getPageErrors()"></app-page-errors>
           <div class="mb-3">
             <label for="email">Email</label>
             <input id="email" type="email" formControlName="email" class="form-control"
